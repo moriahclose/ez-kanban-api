@@ -52,15 +52,44 @@ RESTful API to interact with EZ Kanban app
 ### Delete a board
 > DELETE /lists/{id}
 
-## Items
-### Get all items in a list
-> GET /lists/{id}/items
+## Tasks
+### Get all tasks in a list
+> GET /lists/{id}/tasks
 
 ### Get an item
-> GET /items/{id}
+> GET /tasks/{id}
 
 ### Create an item
-> POST /items
+> POST /tasks
+
+### Update an item
+> GET /tasks/{id}
+
+### Delete an item
+> DELETE /tasks/{id}
+
+## Checklists
+### Get all checklists in an task
+> GET /tasks/{id}/checklists
+
+### Get a checklist
+> GET /checklists/{id}
+
+### Create a checklist
+> POST /checklists
+
+### Update a checklist
+> GET /checklists/{id}
+
+### Delete a checklist
+> DELETE /checklists/{id}
+
+## Checklist Items
+### Get all items in a checklist
+> GET /checklists/{id}/items
+
+### Add an item to a checklist
+> POST /checklists/{id}/items
 
 ### Update an item
 > GET /items/{id}
