@@ -5,9 +5,9 @@ const taskSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  list: {
+  checklists: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'List'
+    ref: 'Checklist'
   },
 });
 

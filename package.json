@@ -4,7 +4,7 @@
   "description": "RESTful API to interact with EZ Kanban app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest ./tests",
     "dev": "nodemon server.js"
   },
   "repository": {
@@ -22,7 +22,9 @@
     "mongoose": "^5.12.13"
   },
   "devDependencies": {
+    "axios": "^0.21.1",
     "dotenv": "^10.0.0",
+    "jest": "^27.0.4",
     "nodemon": "^2.0.7"
   }
 }
