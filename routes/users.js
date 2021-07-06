@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const User = require("../models/user");
+const Users = require("../models/user");
+const Boards = require("../models/board");
 
 // Create a User
 router.post('/', async (req, res) => {
-  const user = new User({
+  const user = new Users({
     name: req.body.name,
   });
 
@@ -43,11 +44,37 @@ router.delete('/:id', getUser, async (req, res) => {
   }
 });
 
+// Create a board
+router.post('/:id/boards', async (req, res) => {
+  const board = new Boards({
+    name: req.body.name,
+    color: req.body.color,
+    user: req.params.id
+  });
+
+  try {
+    const newBoard = await board.save();
+    res.status(201).json(newBoard);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+// Get user's boards
+router.get('/:id/boards', async (req, res) => {
+  try {
+    let boards = await Boards.find({user: req.params.id});
+    res.status(200).json(boards);
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+});
+
 async function getUser(req, res, next) {
   let user;
 
   try {
-    user = await User.findById(req.params.id);
+    user = await Users.findById(req.params.id);
     if (!user) {
       return res.status(404).json({ message: 'User not found.'});
     }
